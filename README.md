@@ -35,21 +35,27 @@ but it still productive and easily understandable. Build on Spring Data JPA and 
 
 ```groovy
 repositories {
-    jcenter()
+    maven { url 'https://jitpack.io' }
 }
 
 dependencies {
-    implementation 'com.github.wenhao:jpa-spec:3.2.5'
+    implementation 'com.github.Skeaner:jpa-spec3:3.2.6'
 }
 ```
 
 ### Maven
 
 ```xml
+<repositories>
+    <repository>
+        <id>jitpack.io</id>
+        <url>https://jitpack.io</url>
+    </repository>
+</repositories>
 <dependency>
-    <groupId>com.github.wenhao</groupId>
-    <artifactId>jpa-spec</artifactId>
-    <version>3.2.5</version>
+    <groupId>com.github.Skeaner</groupId>
+    <artifactId>jpa-spec3</artifactId>
+    <version>3.2.6</version>
 </dependency>
 ```
 

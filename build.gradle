@@ -1,18 +1,18 @@
 plugins {
-    id "com.jfrog.bintray" version "1.8.4"
+//    id "com.jfrog.bintray" version "1.8.4"
     id "org.owasp.dependencycheck" version "5.2.1"
     id 'checkstyle'
     id 'java-library'
     id 'idea'
-    id 'net.ltgt.apt' version '0.21'
-    id 'maven'
+//    id 'net.ltgt.apt' version '0.21'
+//    id 'maven'
     id 'maven-publish'
     id 'signing'
     id 'jacoco'
-    id "com.github.ksoichiro.spelling" version "0.1.1"
+//    id "com.github.ksoichiro.spelling" version "0.1.1"
     id "com.simonharrer.modernizer" version "1.6.0-1"
     id 'com.github.ksoichiro.console.reporter' version '0.6.2'
-    id 'com.github.ksoichiro.build.info' version '0.2.0'
+//    id 'com.github.ksoichiro.build.info' version '0.2.0'
     id "com.github.ben-manes.versions" version '0.22.0'
     id "net.rdrei.android.buildtimetracker" version "0.11.0"
     id "com.github.hierynomus.license" version "0.15.0"
@@ -23,6 +23,7 @@ repositories {
     jcenter()
 }
 
+
 group = 'com.github.wenhao'
 version = '4.0.0-SNAPSHOT'
 
@@ -31,13 +32,14 @@ idea {
         vcs = 'Git'
     }
     module {
-        jdkName = '1.8'
+        jdkName = '17'
     }
 }
 
 dependencies {
     compileOnly "org.springframework.data:spring-data-jpa:$springDataJpaVersion"
-    compileOnly "org.hibernate.javax.persistence:hibernate-jpa-2.1-api:$jpaVersion"
+    compileOnly "jakarta.persistence:jakarta.persistence-api:$jpaVersion"
+    annotationProcessor "jakarta.persistence:jakarta.persistence-api:$jpaVersion"
 
     testImplementation "org.springframework.boot:spring-boot-starter-data-jpa:$springBootVersion"
     testImplementation "org.springframework.boot:spring-boot-starter-test:$springBootVersion"
@@ -51,11 +53,11 @@ dependencies {
 
     task sourcesJar(type: Jar) {
         from sourceSets.main.allSource
-        classifier = 'sources'
+        archiveClassifier = 'sources'
     }
 
     task javadocJar(type: Jar, dependsOn: javadoc) {
-        classifier = 'javadoc'
+        archiveClassifier = 'javadoc'
         from javadoc.destinationDir
     }
 
@@ -93,9 +95,9 @@ checkstyle {
 
 jacocoTestReport {
     reports {
-        xml.enabled true
-        html.enabled true
-        csv.enabled false
+        xml.required =true
+        html.required= true
+        csv.required =false
     }
 }
 
@@ -206,44 +208,44 @@ publishing {
 }
 
 // publish to jcenter
-bintray {
-    user = project.hasProperty('bintrayUser') ? project.property('bintrayUser') : System.getenv('BINTRAY_USER')
-    key = project.hasProperty('bintrayApiKey') ? project.property('bintrayApiKey') : System.getenv('BINTRAY_API_KEY')
-    configurations = ['archives']
-    publications = ['maven']
-    dryRun = false
-    publish = true
-    override = false
-    pkg {
-        repo = 'maven'
-        name = 'jpa-spec'
-        desc = 'A JPA Query By Specification framework'
-        licenses = ['MIT']
-        websiteUrl = 'https://github.com/wenhao/jpa-spec'
-        issueTrackerUrl = 'https://github.com/wenhao/jpa-spec/issues'
-        vcsUrl = 'https://github.com/wenhao/jpa-spec'
-        labels = ['jpa', 'spring-data']
-        publicDownloadNumbers = true
-        githubRepo = 'wenhao/jpa-spec'
-        githubReleaseNotesFile = 'README.md'
-        version {
-            name = '4.0.0-SNAPSHOT'
-            desc = 'A JPA Query By Specification framework 4.0.0-SNAPSHOT'
-            released = new Date()
-            vcsTag = '4.0.0-SNAPSHOT'
-            gpg {
-                sign = true
-                passphrase = 'passphrase'
-            }
-            mavenCentralSync {
-                sync = true
-                user = project.hasProperty('sonatypeUsername')
-                password = project.hasProperty('sonatypePassword')
-                close = '1'
-            }
-        }
-    }
-}
+//bintray {
+//    user = project.hasProperty('bintrayUser') ? project.property('bintrayUser') : System.getenv('BINTRAY_USER')
+//    key = project.hasProperty('bintrayApiKey') ? project.property('bintrayApiKey') : System.getenv('BINTRAY_API_KEY')
+//    configurations = ['archives']
+//    publications = ['maven']
+//    dryRun = false
+//    publish = true
+//    override = false
+//    pkg {
+//        repo = 'maven'
+//        name = 'jpa-spec'
+//        desc = 'A JPA Query By Specification framework'
+//        licenses = ['MIT']
+//        websiteUrl = 'https://github.com/wenhao/jpa-spec'
+//        issueTrackerUrl = 'https://github.com/wenhao/jpa-spec/issues'
+//        vcsUrl = 'https://github.com/wenhao/jpa-spec'
+//        labels = ['jpa', 'spring-data']
+//        publicDownloadNumbers = true
+//        githubRepo = 'wenhao/jpa-spec'
+//        githubReleaseNotesFile = 'README.md'
+//        version {
+//            name = '4.0.0-SNAPSHOT'
+//            desc = 'A JPA Query By Specification framework 4.0.0-SNAPSHOT'
+//            released = new Date()
+//            vcsTag = '4.0.0-SNAPSHOT'
+//            gpg {
+//                sign = true
+//                passphrase = 'passphrase'
+//            }
+//            mavenCentralSync {
+//                sync = true
+//                user = project.hasProperty('sonatypeUsername')
+//                password = project.hasProperty('sonatypePassword')
+//                close = '1'
+//            }
+//        }
+//    }
+//}
 
 copy {
     from "./config/githooks/"

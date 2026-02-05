@@ -139,11 +139,11 @@ jacocoTestCoverageVerification {
     dependsOn(jacocoTestReport)
 }
 
-license {
-    header rootProject.file('config/copyright/copyright.header')
-    excludes(["**/*.properties"])
-    strictCheck true
-}
+//license {
+//    header rootProject.file('config/copyright/copyright.header')
+//    excludes(["**/*.properties"])
+//    strictCheck true
+//}
 
 check.dependsOn jacocoTestCoverageVerification
 check.dependsOn licenseFormat

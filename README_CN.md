@@ -30,7 +30,7 @@ but it still productive and easily understandable. Build on Spring Data JPA and 
 * Builder style specification creator.
 * Support pagination and sort builder.
 -->
-* 兼容 Spring Data JAP 和 JPA 2.1 接口。
+* 兼容 Spring Data JAP 和 JPA 3.1 接口。
 * Equal/NotEqual/Like/NotLike/In/NotIn 支持多参数, Equal/NotEqual 支持 **Null** 值。
 * 每个条件查询支持关联查询(左连接)。
 * 支持自定义条件查询。
@@ -41,21 +41,28 @@ but it still productive and easily understandable. Build on Spring Data JPA and 
 
 ```groovy
 repositories {
-    jcenter()
+    maven { url 'https://jitpack.io' }
 }
 
 dependencies {
-    implementation 'com.github.wenhao:jpa-spec:3.2.5'
+    implementation 'com.github.Skeaner:jpa-spec3:3.2.4'
 }
 ```
 
 ### Maven
 
 ```xml
+<repositories>
+    <repository>
+        <id>jitpack.io</id>
+        <url>https://jitpack.io</url>
+    </repository>
+</repositories>
+
 <dependency>
-    <groupId>com.github.wenhao</groupId>
-    <artifactId>jpa-spec</artifactId>
-    <version>3.2.5</version>
+<groupId>com.github.Skeaner</groupId>
+    <artifactId>jpa-spec3</artifactId>
+    <version>3.2.4</version>
 </dependency>
 ```
 

@@ -23,13 +23,13 @@ but it still productive and easily understandable. Build on Spring Data JPA and 
 
 ### Docs
 
-| English Version | Chinese Version |
-|-----------------|-----------------|
-| [Latest]        | [最新]          |
-| [3.2.5]         | [3.2.5_cn]      |
-| [3.2.1]         | [3.2.1_cn]      |
-| [3.1.0]         | [3.1.0_cn]      |
-| [3.0.0]         | [3.0.0_cn]      |
+| English Version          | Chinese Version                |
+|--------------------------|--------------------------------|
+| [Latest](./docs/3.2.4.md)| [最新](./docs/3.2.4_cn.md)       |
+| [3.2.4](./docs/3.2.4.md) | [3.2.4_cn](./docs/3.2.4_cn.md) |
+| [3.2.1]                  | [3.2.1_cn]                     |
+| [3.1.0]                  | [3.1.0_cn]                     |
+| [3.0.0]                  | [3.0.0_cn]                     |
 
 ### Gradle
 
@@ -39,7 +39,7 @@ repositories {
 }
 
 dependencies {
-    implementation 'com.github.Skeaner:jpa-spec3:3.2.6'
+    implementation 'com.github.Skeaner:jpa-spec3:3.2.4'
 }
 ```
 
@@ -55,7 +55,7 @@ dependencies {
 <dependency>
     <groupId>com.github.Skeaner</groupId>
     <artifactId>jpa-spec3</artifactId>
-    <version>3.2.6</version>
+    <version>3.2.4</version>
 </dependency>
 ```
 
